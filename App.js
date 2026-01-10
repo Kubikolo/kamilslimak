@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import BottomTabs from './src/frontend/navigation/BottomTabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -48,5 +48,8 @@ const Stack = createNativeStackNavigator({
 const Navigation = createStaticNavigation(Stack);
 
 export default function App() {
-  return (<Navigation/>);
-}
+  return (<NavigationContainer>
+      <BottomTabs/>
+    </NavigationContainer>
+    );
+} 
