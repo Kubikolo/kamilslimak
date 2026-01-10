@@ -184,9 +184,12 @@ export const styles = StyleSheet.create({
     },
 
     qrCode: {
-        alignItems: "center",
+        alignItems: 'center',
+        alignSelf: 'center',
         padding: 16,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: '#d7d7d7ff',
+        borderRadius: 10,
     },
 
     qrBody: {
