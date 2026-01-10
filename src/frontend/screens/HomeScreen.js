@@ -23,7 +23,7 @@ export default function HomeScreen() {
       showsVerticalScrollIndicator={false}
       >
         <BusinessCardContainer title={"Twoje ulubione"}>
-          <BusinessCard/>
+          <BusinessCard text={"Klub Studio"}/>
           <BusinessCard/>
           <BusinessCard/>
         </BusinessCardContainer>
