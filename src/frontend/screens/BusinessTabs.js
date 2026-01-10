@@ -20,7 +20,7 @@ export default function BusinessTabs({ route }) {
         <Tab.Navigator
             initialRouteName="Jak zdobyć"
             screenOptions={{
-            tabBarActiveTintColor: '#fff',
+            tabBarActiveTintColor: '#ffffff',
             tabBarLabelStyle: { fontSize: 14 },
             tabBarStyle: { backgroundColor: '#6200ee' },
             tabBarIndicatorStyle: { backgroundColor: '#ffeb3b' },
@@ -29,7 +29,7 @@ export default function BusinessTabs({ route }) {
                 {() => <GetPointsScreen businessId={businessId}/>}
             </Tab.Screen>
             <Tab.Screen name="Jak wykorzystać">
-                {() => <GetPointsScreen businessId={businessId}/>}
+                {() => <SpendPointsScreen businessId={businessId}/>}
             </Tab.Screen>
         </Tab.Navigator>
     </SafeAreaView>

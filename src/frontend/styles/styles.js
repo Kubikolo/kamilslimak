@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { StyleColors } from "./colors";
+import OfferBody from "../components/offers/OfferBody";
 
 export const styles = StyleSheet.create({
       container: { 
@@ -121,6 +122,69 @@ export const styles = StyleSheet.create({
     },
 
     businessText: {
-        textAlign: 'center'
-    }
+        textAlign: 'center',
+        padding: 16
+    },
+
+    businessListContainer: {
+        flex: 1,
+        padding: 16
+    },
+
+    offerBody: {
+        backgroundColor: '#d7d7d7ff',
+        marginBottom: 10,
+        borderRadius: 10,
+    },
+
+    offerRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+
+    offerText: {
+        fontSize: 15,
+        fontWeight: 500,
+        padding: 10,
+        marginHorizontal: 10,
+    },
+
+    activateButton: {
+        marginTop: 12,
+        backgroundColor: '#6200ee',
+        paddingVertical: 10,
+        borderRadius: 6,
+        alignItems: 'center',
+    },
+    activateButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+
+    confirmationModalBody: {
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        backgroundColor: '#57575780',
+        padding: 24,
+    },
+
+    confirmationModalTitle: {
+        textAlign: 'center',
+        fontSize: 15,
+        fontWeight: 500,
+    },
+
+    confirmationModalRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+
+    confirmationModalText: {
+        textAlign: 'center',
+        paddingVertical: 10,
+    },
 });
