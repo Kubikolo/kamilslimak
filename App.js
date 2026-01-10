@@ -35,6 +35,9 @@ const Stack = createNativeStackNavigator({
     TermsOfServiceScreen: {
       screen: TermsOfServiceScreen,
     },
+    BottomTabs: {
+      screen: BottomTabs,
+    },
   },
 
   initialRouteName: "LogInScreen",

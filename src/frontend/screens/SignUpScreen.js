@@ -49,7 +49,7 @@ export default function SignUpScreen() {
     try {
       // await createUserWithEmailAndPassword(auth, email, password);
       Alert.alert("Sukces", "Konto utworzone!");
-      navigation.navigate("HomeScreen");
+      navigation.navigate("BottomTabs");
     } catch (error) {
       Alert.alert("Błąd", error.message);
     }
