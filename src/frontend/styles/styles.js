@@ -51,5 +51,85 @@ export const styles = StyleSheet.create({
     profileOptionIcon: {
         color: "black",
         size: 60
-    }
+    },
+
+    signUpContainer: { 
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center' 
+    },
+
+    signUpHeaderText: {
+        fontSize: 30,
+        fontWeight: 800
+    },
+
+    signUpInputContainer: {
+        height: '12%',
+        width: '80%',
+        justifyContent: 'center'
+    },
+
+    signUpInputText: {
+        fontSize: 22,
+        fontWeight: 400,
+        marginLeft: 0
+    },
+
+    signUpInputBox: {
+        fontSize: 20,
+        fontWeight: 300,
+        marginLeft: 0
+    },
+
+    signUpInputBoxText: {
+        fontSize: 20,
+        fontWeight: 300,
+        marginLeft: 0,
+        borderWidth: 2,
+        borderRadius: 7,
+    },
+
+    signUpBoxContainer: {
+        height: '12%',
+        width: '80%',
+        justifyContent: 'center',
+    },
+
+    signUpButton: {
+        height: '50%',
+        backgroundColor: "#077fe9",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 2,
+        borderRadius: 7,
+        fontSize: 20,
+        fontWeight: 500,
+        
+    },
+
+    signUpButtonText: {
+        fontSize: 20,
+        fontWeight: 500,        
+    },
+
+    signUpLinkContainer: {
+        height: '12%',
+        width: '80%',
+        alignItems: 'center',
+    },
+
+    signUpLinkContainerText: {
+        fontSize: 20,
+        fontWeight: 300,
+        paddingBottom: 10
+    },
+
+    signUpLink: {
+        fontSize: 20,
+        fontWeight: 500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+    },
 });
