@@ -132,4 +132,84 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         color: "#080a9f",
     },
+
+    logInContainer: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center' 
+    },
+
+    logInHeaderText: {
+        fontSize: 30,
+        fontWeight: 800
+    },
+
+    logInInputContainer: {
+        height: '12%',
+        width: '80%',
+        justifyContent: 'center'
+    },
+
+    logInInputText: {
+        fontSize: 22,
+        fontWeight: 400,
+        marginLeft: 0
+    },
+
+    logInInputBox: {
+        fontSize: 20,
+        fontWeight: 300,
+        marginLeft: 0
+    },
+
+    logInInputBoxText: {
+        fontSize: 20,
+        fontWeight: 300,
+        marginLeft: 0,
+        borderWidth: 2,
+        borderRadius: 7,
+    },
+
+    logInBoxContainer: {
+        height: '12%',
+        width: '80%',
+        justifyContent: 'center',
+    },
+
+    logInButton: {
+        height: '50%',
+        backgroundColor: "#077fe9",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 2,
+        borderRadius: 7,
+        fontSize: 20,
+        fontWeight: 500,
+    },
+
+    logInButtonText: {
+        fontSize: 20,
+        fontWeight: 500,        
+    },
+
+    logInLinkContainer: {
+        height: '12%',
+        width: '80%',
+        alignItems: 'center',
+    },
+
+    logInLinkContainerText: {
+        fontSize: 20,
+        fontWeight: 300,
+        paddingBottom: 10
+    },
+
+    logInLink: {
+        fontSize: 20,
+        fontWeight: 500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+    },
+
 });
