@@ -7,32 +7,47 @@ import SignUpScreen from './src/frontend/screens/SignUpScreen';
 import LogInScreen from './src/frontend/screens/LogInScreen';
 import HomeScreen from './src/frontend/screens/HomeScreen';
 import ProfileScreen from './src/frontend/screens/ProfileScreen';
+import {UserProvider} from './src/frontend/contexts/userContext';
 
-const Stack = createNativeStackNavigator({
+
+// const Stack = createNativeStackNavigator({
   
-  screens: {
-    SignUpScreen: {
-      screen: SignUpScreen,   
-    },
-    LogInScreen: {
-      screen: LogInScreen,
-    },
-    HomeScreen: {
-      screen: HomeScreen,
-    },
-    ProfileScreen: {
-      screen: ProfileScreen,
-    },
-  },
+//   screens: {
+//     SignUpScreen: {
+//       screen: SignUpScreen,   
+//     },
+//     LogInScreen: {
+//       screen: LogInScreen,
+//     },
+//     HomeScreen: {
+//       screen: HomeScreen,
+//     },
+//     ProfileScreen: {
+//       screen: ProfileScreen,
+//     },
+//   },
 
-  screenOptions: {
-    headerShown: false,
-    animation: "slide_from_right",
-  }
-});
+//   screenOptions: {
+//     headerShown: false,
+//     animation: "slide_from_right",
+//   }
+// });
 
-const Navigation = createStaticNavigation(Stack);
+// const Navigation = createStaticNavigation(Stack);
 
+const Stack = createNativeStackNavigator();
 export default function App() {
-  return (<Navigation/>);
+  return (
+    <UserProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+          <Stack.Screen name="LogInScreen" component={LogInScreen} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen name="BottomTabs" component={BottomTabs}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserProvider>
+  );
 }
