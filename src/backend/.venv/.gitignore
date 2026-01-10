@@ -1,5 +1,0 @@
-# Ignore env file
-src/.env
-
-*.idea
-/Lib
