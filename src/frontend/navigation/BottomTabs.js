@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
+import BusinessTabs from '../screens/BusinessTabs';
 import ProfileScreen from '../screens/ProfileScreen';
 import QRScreen from '../screens/QRScreen';
 
@@ -21,7 +22,7 @@ export default function BottomTabs() {
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={BusinessTabs} />
       <Tab.Screen name="Kod QR" component={QRScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
