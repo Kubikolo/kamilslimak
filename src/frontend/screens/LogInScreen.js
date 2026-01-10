@@ -27,7 +27,7 @@ export default function LogInScreen() {
        
     try {
       // await logInWithEmailAndPassword(email, password);
-      navigation.navigate("HomeScreen");
+      navigation.navigate("BottomTabs");
     } catch (error) {
       Alert.alert("Błąd", error.message);
     }
@@ -37,7 +37,7 @@ export default function LogInScreen() {
     <SafeAreaView style={styles.logInContainer}>
 
       <View style={styles.logInHeader}>
-        <Text style={styles.logInHeaderText}>Logowanie</Text>
+        <Text style={styles.logInHeaderText}>Logowanie klienta</Text>
       </View>
 
       <View style={styles.logInInputContainer}>
@@ -69,7 +69,7 @@ export default function LogInScreen() {
         <TouchableOpacity
           style={styles.logInButton}
           onPress={handleLogIn}
-          activeOpacity={0.7}
+          activeOpacity={0.9}
         >
           <Text style={styles.logInButtonText}>
             Zaloguj się
@@ -84,6 +84,16 @@ export default function LogInScreen() {
           onPress={() => navigation.navigate('SignUpScreen')}
         >
           Zarejestruj się
+        </Text>
+      </View>
+
+      <View style={styles.signUpLinkContainer}>
+        <Text style={styles.signUpLinkContainerText}>Jesteś przedsiębiorcą?</Text>
+        <Text
+          style={styles.signUpLink}
+          onPress={() => navigation.navigate('BusinessLogInScreen')}
+        >
+          Przejdź do panelu przedsiębiorcy
         </Text>
       </View>
 
