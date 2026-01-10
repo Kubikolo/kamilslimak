@@ -26,7 +26,7 @@ export default function LogInScreen() {
     }
        
     try {
-      // await logInWithEmailAndPassword(auth, email, password);
+      // await logInWithEmailAndPassword(email, password);
       navigation.navigate("HomeScreen");
     } catch (error) {
       Alert.alert("Błąd", error.message);

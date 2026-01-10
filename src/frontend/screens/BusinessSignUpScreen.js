@@ -103,19 +103,19 @@ export default function SignUpScreen() {
         <Text style={styles.signUpLinkContainerText}>Masz już konto?</Text>
         <Text
           style={styles.signUpLink}
-          onPress={() => navigation.navigate('LogInScreen')}
+          onPress={() => navigation.navigate('BusinessLogInScreen')}
         >
           Zaloguj się
         </Text>
       </View>
 
       <View style={styles.signUpLinkContainer}>
-        <Text style={styles.signUpLinkContainerText}>Jesteś przedsiębiorcą?</Text>
+        <Text style={styles.signUpLinkContainerText}>Nie jesteś przedsiębiorcą?</Text>
         <Text
           style={styles.signUpLink}
-          onPress={() => navigation.navigate('BusinessSignUpScreen')}
+          onPress={() => navigation.navigate('SignUpScreen')}
         >
-          Przejdź do panelu przedsiębiorcy
+          Przejdź do panelu klienta
         </Text>
       </View>
 
