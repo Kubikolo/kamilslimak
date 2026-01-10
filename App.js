@@ -10,47 +10,47 @@ import ProfileScreen from './src/frontend/screens/ProfileScreen';
 import BusinessSignUpScreen from './src/frontend/screens/BusinessSignUpScreen';
 import BusinessLogInScreen from './src/frontend/screens/BusinessLogInScreen';
 import TermsOfServiceScreen from './src/frontend/screens/TermsOfServiceScreen';
+import {UserProvider} from './src/frontend/contexts/userContext';
 
-const Stack = createNativeStackNavigator({
+
+// const Stack = createNativeStackNavigator({
   
-  screens: {
-    SignUpScreen: {
-      screen: SignUpScreen,   
-    },
-    LogInScreen: {
-      screen: LogInScreen,
-    },
-    BusinessSignUpScreen: {
-      screen: BusinessSignUpScreen,   
-    },
-    BusinessLogInScreen: {
-      screen: BusinessLogInScreen,
-    },
-    HomeScreen: {
-      screen: HomeScreen,
-    },
-    ProfileScreen: {
-      screen: ProfileScreen,
-    },
-    TermsOfServiceScreen: {
-      screen: TermsOfServiceScreen,
-    },
-    BottomTabs: {
-      screen: BottomTabs,
-    },
-  },
+//   screens: {
+//     SignUpScreen: {
+//       screen: SignUpScreen,   
+//     },
+//     LogInScreen: {
+//       screen: LogInScreen,
+//     },
+//     HomeScreen: {
+//       screen: HomeScreen,
+//     },
+//     ProfileScreen: {
+//       screen: ProfileScreen,
+//     },
+//   },
 
-  initialRouteName: "LogInScreen",
+//   screenOptions: {
+//     headerShown: false,
+//     animation: "slide_from_right",
+//   }
+// });
 
-  screenOptions: {
-    headerShown: false,
-    animation: "slide_from_right",
-  }
-});
+// const Navigation = createStaticNavigation(Stack);
 
-const Navigation = createStaticNavigation(Stack);
-
+const Stack = createNativeStackNavigator();
 export default function App() {
-  return (<Navigation/>
-    );
-} 
+  return (
+    <UserProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+          <Stack.Screen name="LogInScreen" component={LogInScreen} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen name="BottomTabs" component={BottomTabs}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserProvider>
+  );
+}
