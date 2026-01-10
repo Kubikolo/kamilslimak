@@ -88,5 +88,39 @@ export const styles = StyleSheet.create({
 
     qrText: {
         textAlign: 'center'
+    },
+
+    businessContainer: {
+        flex: 1,
+    },
+
+    businessHeaderText: {
+        fontSize: 30,
+        fontWeight: 800,
+    },
+
+    businessHeader: {
+        height: 80,
+        flexDirection: "row",
+        alignItems: "center",
+        padding: 16,
+        justifyContent: 'center'
+    },
+
+    businessCode: {
+        alignItems: "center",
+        padding: 16,
+        justifyContent: 'center'
+    },
+
+    businessBody: {
+        flex: 1,
+        padding: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    businessText: {
+        textAlign: 'center'
     }
 });
