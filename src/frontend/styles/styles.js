@@ -376,10 +376,6 @@ export const styles = StyleSheet.create({
         color: "#080a9f",
     },
 
-        textAlign: 'center',
-        padding: 16
-    },
-
     businessListContainer: {
         flex: 1,
         padding: 16
