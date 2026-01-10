@@ -75,52 +75,6 @@ export const styles = StyleSheet.create({
         flex: 1,        // fills rest of card below text strip
     },
 
-    homeContainer: {
-        flex: 1,
-        padding: 15
-    },
-
-    homeSearch: {
-        height: 60,
-        fontSize: 10
-    },
-
-    businessCardCategory: {
-        marginTop: 10,
-    },
-    
-    businessCardCategoryTitle: {
-        fontSize: 20,
-        fontWeight: 600,
-        marginLeft: 10
-    },
-
-    businessCardContainer: {
-        padding: 10,
-        flexGrow: 0
-    },
-
-    businessCard: {
-        height: 200,
-        backgroundColor: "#fff",       // Card background
-        borderRadius: 16,              // Rounded corners
-        padding: 16,                   // Inner spacing
-        shadowColor: "#000",           // iOS shadow
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 3,                  // Android shadow
-        width: 250
-    },
-
-    businessCardWrapper: {
-        marginRight: 12, // spacing between cards
-    },
-
-    businessText: {
-
-    },
-
     profileContainer: {
         flex: 1,
     },
