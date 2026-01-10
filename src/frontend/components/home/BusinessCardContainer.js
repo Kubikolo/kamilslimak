@@ -1,28 +1,25 @@
 import React from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
-import BusinessCard from "./BusinessCard";
+import { ScrollView, View, Text } from "react-native";
+import { styles } from '../../styles/styles'
 
-export default function BusinessCardContainer({ cards }) {
+export default function BusinessCardContainer({ children, title}) {
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false} // optional: hide scroll bar
-      contentContainerStyle={styles.container} // spacing/padding
-    >
-      {cards.map((card, index) => (
-        <View key={index} style={styles.cardWrapper}>
-          <BusinessCard title={card.title} content={card.content} />
-        </View>
-      ))}
-    </ScrollView>
+    <View style={styles.businessCardCategory}>
+        <Text style={styles.businessCardCategoryTitle}>
+            {title}
+        </Text>
+        <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.businessCardContainer}
+        >
+
+        {React.Children.map(children, (child, index) => (
+            <View key={index} style={styles.businessCardWrapper}>
+                {child}
+            </View>
+        ))}
+        </ScrollView>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 16, // padding on left/right of the list
-  },
-  cardWrapper: {
-    marginRight: 16, // spacing between cards
-  },
-});

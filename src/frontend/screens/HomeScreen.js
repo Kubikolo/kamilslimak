@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Searchbar } from 'react-native-paper';
 import { styles } from '../styles/styles'
@@ -19,11 +19,27 @@ export default function HomeScreen() {
         value={searchQuery}
         style={ styles.homeSearch }
       />
-      <BusinessCardContainer>
-        <BusinessCard/>
-        <BusinessCard/>
-        <BusinessCard/>
-      </BusinessCardContainer>
+      <ScrollView
+      showsVerticalScrollIndicator={false}
+      >
+        <BusinessCardContainer title={"Twoje ulubione"}>
+          <BusinessCard/>
+          <BusinessCard/>
+          <BusinessCard/>
+        </BusinessCardContainer>
+
+        <BusinessCardContainer title={"Fryzjerzy"}>
+          <BusinessCard/>
+          <BusinessCard/>
+          <BusinessCard/>
+        </BusinessCardContainer>
+
+        <BusinessCardContainer title={"Warzywa"}>
+          <BusinessCard/>
+          <BusinessCard/>
+          <BusinessCard/>
+        </BusinessCardContainer>
+      </ScrollView>
     </SafeAreaView>
   );
 }

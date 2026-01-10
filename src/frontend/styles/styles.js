@@ -22,17 +22,36 @@ export const styles = StyleSheet.create({
         fontSize: 10
     },
 
+    businessCardCategory: {
+        marginTop: 10,
+    },
+    
+    businessCardCategoryTitle: {
+        fontSize: 20,
+        fontWeight: 600,
+        marginLeft: 10
+    },
+
+    businessCardContainer: {
+        padding: 10,
+        flexGrow: 0
+    },
+
     businessCard: {
         height: 200,
         backgroundColor: "#fff",       // Card background
         borderRadius: 16,              // Rounded corners
         padding: 16,                   // Inner spacing
         shadowColor: "#000",           // iOS shadow
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 3,                  // Android shadow
-        marginTop: 16,              // Spacing between cards
+        width: 250
+    },
+
+    businessCardWrapper: {
+        marginRight: 12, // spacing between cards
     },
 
     businessText: {
