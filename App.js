@@ -1,11 +1,9 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import BottomTabs from './src/frontend/navigation/BottomTabs';
+import React from "react";
+import { View, Text } from "react-native";
+import { style } from "./src/frontend/styles/styles";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <BottomTabs/>
-    </NavigationContainer>
+    
   );
 }
