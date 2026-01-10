@@ -54,8 +54,24 @@ export const styles = StyleSheet.create({
         marginRight: 12, // spacing between cards
     },
 
-    businessText: {
+    businessTextContainer: {
+        width: "100%",
+        backgroundColor: "#E5E5E5", // light gray
+        paddingVertical: 8,          // vertical padding for text
+        paddingHorizontal: 12,       // horizontal padding
+    },
 
+    businessText: {
+        fontSize: 16,
+        fontWeight: "bold",
+        color: "#000",
+    },
+
+    // Image below text
+    businessCardImage: {
+        width: "100%",
+        height: "100%", // will fill remaining space
+        flex: 1,        // fills rest of card below text strip
     },
 
     profileContainer: {

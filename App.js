@@ -34,5 +34,8 @@ const Stack = createNativeStackNavigator({
 const Navigation = createStaticNavigation(Stack);
 
 export default function App() {
-  return (<Navigation/>);
-}
+  return (<NavigationContainer>
+      <BottomTabs/>
+    </NavigationContainer>
+    );
+} 
