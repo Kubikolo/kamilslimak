@@ -1,12 +1,11 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 import { styles } from "../../styles/styles"
 
 export default function BusinessCard({ iconName = "person", text = "Opcja"}) {
   return (
-    <View style={styles.profileOption}>
-      <MaterialIcons name={iconName} style={styles.profileOptionIcon} size={30} />
-      <Text style={styles.profileOptionText}>{text}</Text>
-    </View>
+    <TouchableOpacity style={styles.businessCard}>
+      <Text style={styles.businessText}>{text}</Text>
+    </TouchableOpacity>
   );
 }

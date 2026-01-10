@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Searchbar } from 'react-native-paper';
 import { styles } from '../styles/styles'
 import BusinessCard from '../components/home/BusinessCard';
+import BusinessCardContainer from '../components/home/BusinessCardContainer';
 
 export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -18,7 +19,11 @@ export default function HomeScreen() {
         value={searchQuery}
         style={ styles.homeSearch }
       />
-      <BusinessCard></BusinessCard>
+      <BusinessCardContainer>
+        <BusinessCard/>
+        <BusinessCard/>
+        <BusinessCard/>
+      </BusinessCardContainer>
     </SafeAreaView>
   );
 }

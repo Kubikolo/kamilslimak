@@ -22,6 +22,23 @@ export const styles = StyleSheet.create({
         fontSize: 10
     },
 
+    businessCard: {
+        height: 200,
+        backgroundColor: "#fff",       // Card background
+        borderRadius: 16,              // Rounded corners
+        padding: 16,                   // Inner spacing
+        shadowColor: "#000",           // iOS shadow
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,                  // Android shadow
+        marginTop: 16,              // Spacing between cards
+    },
+
+    businessText: {
+
+    },
+
     profileContainer: {
         flex: 1,
     },
