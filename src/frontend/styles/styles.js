@@ -161,6 +161,26 @@ export const styles = StyleSheet.create({
         borderRadius: 7,
     },
 
+    signUpTermsOfServiceContainer: {
+        height: '6%',
+        width: '80%',
+        alignItems: 'center',
+    },
+
+    signUpTermsOfServiceContainerText: {
+        fontSize: 17,
+        fontWeight: 300,
+
+    },
+
+    signUpTermsOfServiceLink: {
+        fontSize: 17,
+        fontWeight: 300,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+    },
+
     signUpBoxContainer: {
         height: '12%',
         width: '80%',
@@ -282,5 +302,47 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         color: "#080a9f",
     },
+
+    termsOfServiceContainer: { 
+        flex: 1,
+        width: '100%',
+        justifyContent: 'center', 
+        alignItems: 'center' 
+    },
+
+    termsOfServiceHeader: {
+        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center', 
+    },
+
+    termsOfServiceHeaderText: {
+        fontSize: 30,
+        fontWeight: 800,
+    },
+
+    termsOfServiceText: {
+        paddingLeft: 20,
+        paddingRight: 20,
+        fontSize: 16,
+        fontWeight: 300,
+    },
+
+    termsOfServiceLinkContainer: {
+        alignItems: 'center',
+        justifyContent: 'center', 
+    },
+
+    termsOfServiceLink: {
+        paddingBottom: 40,
+        paddingTop: 20,
+        fontSize: 20,
+        fontWeight: 500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+    },
+
+
 
 });

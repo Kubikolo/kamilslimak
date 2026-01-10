@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import {useNavigation} from '@react-navigation/native';
 
 
-export default function SignUpScreen() {
+export default function BusinessSignUpScreen() {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
@@ -59,7 +59,7 @@ export default function SignUpScreen() {
     <SafeAreaView style={styles.signUpContainer}>
 
       <View style={styles.signUpHeader}>
-        <Text style={styles.signUpHeaderText}>Rejestracja</Text>
+        <Text style={styles.signUpHeaderText}>Rejestracja przedsiębiorcy</Text>
       </View>
 
       <View style={styles.signUpInputContainer}>
@@ -87,11 +87,28 @@ export default function SignUpScreen() {
         </View>        
       </View>
 
+      <View style={styles.signUpTermsOfServiceContainer}>
+        <Text style={styles.signUpTermsOfServiceContainerText}>
+          <Text>
+            Klikając "Zarejestruj się", potwierdzasz, że znasz i akceptujesz { }
+          </Text>
+          <Text
+            style={styles.signUpTermsOfServiceLink}
+            onPress={() => navigation.navigate('TermsOfServiceScreen')}
+          >
+            Regulamin
+          </Text>
+          <Text>
+            .
+          </Text>
+        </Text>       
+      </View>
+
       <View style={styles.signUpBoxContainer}>
         <TouchableOpacity
           style={styles.signUpButton}
           onPress={handleSignUp}
-          activeOpacity={0.7}
+          activeOpacity={0.9}
         >
           <Text style={styles.signUpButtonText}>
             Zarejestruj się

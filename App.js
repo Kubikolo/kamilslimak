@@ -7,6 +7,9 @@ import SignUpScreen from './src/frontend/screens/SignUpScreen';
 import LogInScreen from './src/frontend/screens/LogInScreen';
 import HomeScreen from './src/frontend/screens/HomeScreen';
 import ProfileScreen from './src/frontend/screens/ProfileScreen';
+import BusinessSignUpScreen from './src/frontend/screens/BusinessSignUpScreen';
+import BusinessLogInScreen from './src/frontend/screens/BusinessLogInScreen';
+import TermsOfServiceScreen from './src/frontend/screens/TermsOfServiceScreen';
 
 const Stack = createNativeStackNavigator({
   
@@ -17,13 +20,24 @@ const Stack = createNativeStackNavigator({
     LogInScreen: {
       screen: LogInScreen,
     },
+    BusinessSignUpScreen: {
+      screen: BusinessSignUpScreen,   
+    },
+    BusinessLogInScreen: {
+      screen: BusinessLogInScreen,
+    },
     HomeScreen: {
       screen: HomeScreen,
     },
     ProfileScreen: {
       screen: ProfileScreen,
     },
+    TermsOfServiceScreen: {
+      screen: TermsOfServiceScreen,
+    },
   },
+
+  initialRouteName: "LogInScreen",
 
   screenOptions: {
     headerShown: false,
