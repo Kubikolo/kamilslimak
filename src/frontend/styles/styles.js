@@ -12,6 +12,16 @@ export const styles = StyleSheet.create({
     
     },
 
+    homeContainer: {
+        flex: 1,
+        padding: 15
+    },
+
+    homeSearch: {
+        height: 60,
+        fontSize: 10
+    },
+
     profileContainer: {
         flex: 1,
     },
