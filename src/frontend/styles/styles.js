@@ -39,16 +39,16 @@ export const styles = StyleSheet.create({
     },
 
     businessCard: {
-        height: 200,
+        height: 150,
         backgroundColor: "#fff",       // Card background
         borderRadius: 16,              // Rounded corners
-        padding: 16,                   // Inner spacing
         shadowColor: "#000",           // iOS shadow
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 3,                  // Android shadow
-        width: 250
+        width: 250,
+        overflow: "hidden"
     },
 
     businessCardWrapper: {
@@ -58,13 +58,13 @@ export const styles = StyleSheet.create({
     businessTextContainer: {
         width: "100%",
         backgroundColor: "#E5E5E5", // light gray
-        paddingVertical: 8,          // vertical padding for text
-        paddingHorizontal: 12,       // horizontal padding
+        paddingVertical: 8,
+        paddingLeft: 16
     },
 
-    businessText: {
+    businessCardText: {
         fontSize: 16,
-        fontWeight: "bold",
+        fontWeight: 600,
         color: "#000",
     },
 
