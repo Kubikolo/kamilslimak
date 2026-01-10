@@ -53,7 +53,4 @@ const Navigation = createStaticNavigation(Stack);
 export default function App() {
   return (<Navigation/>
     );
-  return (
-    <Navigation/>
-  );
 } 
