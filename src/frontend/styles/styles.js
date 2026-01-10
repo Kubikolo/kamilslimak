@@ -35,4 +35,21 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    profileOption: {
+        flexDirection: "row",
+        padding: 10,
+        alignItems: 'center',
+        marginBottom: 30
+    },
+
+    profileOptionText: {
+        fontSize: 20,
+        fontWeight: 500,
+        marginLeft: 20
+    },
+
+    profileOptionIcon: {
+        color: "black",
+        size: 60
+    }
 });
