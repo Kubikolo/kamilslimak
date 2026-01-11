@@ -12,6 +12,7 @@ export default function SignUpScreen() {
   //const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   //const [passwordError, setPasswordError] = useState("");
+  const [username, setUsername] = useState("");
 
   const isValidEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,41 +26,68 @@ export default function SignUpScreen() {
 
 
   const handleSignUp = async () => {
-    if (!email && !password) {
-      Alert.alert("Podaj e-mail i hasło!");
+    if (!email || !password || !username) {
+      Alert.alert("Uzupełnij wszystkie pola");
       return;
     }
-    if (!email) {
-      Alert.alert("Podaj e-mail!");
+
+    if(!isValidEmail(email)){
+      Alert.alert("Zły format maila");
       return;
     }
-    if (!password) {
-      Alert.alert("Podaj hasło!");
-      return;
-    } 
-    if (!isValidEmail(email)) {
-      Alert.alert("Podany e-mail nie jest poprawny!");
-      return;
-    }
-    if (!isValidPassword(password)) {
-      Alert.alert("Podane hasło nie jest poprawne!");
-      return;
-    }
-       
+
     try {
-      // await createUserWithEmailAndPassword(auth, email, password);
+      const response = await fetch("http://192.168.0.9:5000/create-user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          username,
+        }),
+      });
+
+      console.log("Status:", response.status);
+      const text = await response.text();
+      console.log("Response text:", text);
+
+      if (!response.ok) {
+        throw new Error("Nie udało się utworzyć konta");
+      }
+
+      const data = JSON.parse(text); // rzutowanie JSON
+      if (!data.uid) throw new Error("Nie udało się utworzyć konta");
+
       Alert.alert("Sukces", "Konto utworzone!");
-      navigation.navigate("BottomTabs");
+      console.log("UID:", data.uid);
+
+      navigation.replace("HomeScreen");
     } catch (error) {
+      console.error(error);
       Alert.alert("Błąd", error.message);
     }
   };
+
 
   return (
     <SafeAreaView style={styles.signUpContainer}>
 
       <View style={styles.signUpHeader}>
         <Text style={styles.signUpHeaderText}>Rejestracja klienta</Text>
+      </View>
+
+      <View style={styles.signUpInputContainer}>
+        <Text style={styles.signUpInputText}>nazwa użytkownika</Text>
+        <View style={styles.signUpInputBox}>
+          <TextInput
+            style={styles.signUpInputBoxText}
+            placeholder=" Twoja nazwa"
+            value={username}
+            onChangeText={setUsername}
+          />
+        </View>
       </View>
 
       <View style={styles.signUpInputContainer}>
