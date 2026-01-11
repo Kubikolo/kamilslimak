@@ -28,16 +28,29 @@ export const styles = StyleSheet.create({
     
     businessCardCategoryTitle: {
         fontSize: 20,
-        fontWeight: 600,
-        marginLeft: 10
+        fontWeight: 600
     },
 
     businessCardContainer: {
-        padding: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
         flexGrow: 0
     },
 
-    businessCard: {
+    businessCardNotInCategory: {
+        height: 200,
+        backgroundColor: "#fff",       // Card background
+        borderRadius: 16,              // Rounded corners
+        shadowColor: "#000",           // iOS shadow
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,                  // Android shadow
+        overflow: "hidden",
+        marginTop: 20
+    },
+
+    businessCardInCategory: {
         height: 150,
         backgroundColor: "#fff",       // Card background
         borderRadius: 16,              // Rounded corners
