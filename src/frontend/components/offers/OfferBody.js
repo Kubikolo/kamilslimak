@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "../../styles/styles"
 
-export default function OfferBody({name = "Opcja", points = 123, showActivateButton, onActivate}) {
+export default function OfferBody({name='Opcja', points=123, buttonText='Aktywuj', showActivateButton=false, showDeleteButton=false, onActivate}) {
   return (
     <View style={styles.offerBody}>
         <View style={styles.offerRow}>
@@ -10,7 +10,12 @@ export default function OfferBody({name = "Opcja", points = 123, showActivateBut
         </View>
         {showActivateButton && (
             <TouchableOpacity style={styles.activateButton} onPress={onActivate}>
-            <Text style={styles.activateButtonText}>Aktywuj</Text>
+            <Text style={styles.activateButtonText}>{buttonText}</Text>
+            </TouchableOpacity>
+        )}
+        {showDeleteButton && (
+            <TouchableOpacity style={styles.deleteButton} onPress={onActivate}>
+            <Text style={styles.activateButtonText}>{buttonText}</Text>
             </TouchableOpacity>
         )}
     </View>

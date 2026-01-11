@@ -9,16 +9,16 @@ export default function ConfirmationModal({ visible, onClose, onConfirm, title, 
         animationType="fade"
         onRequestClose={onClose}
         >
-        <View style={styles.confirmationModalBody}>
-            <View style={{ backgroundColor: '#fff', padding: 24, borderRadius: 8 }}>
-                <Text style={styles.confirmationModalTitle}>{title}</Text>
-                <Text style={styles.confirmationModalText}>{message}</Text>
-                <View style={styles.confirmationModalRow}>
-                    <TouchableOpacity onPress={onConfirm}>
-                        <Text style={styles.confirmationModalText}>Anuluj</Text>
-                    </TouchableOpacity>
+        <View style={styles.modalContainer}>
+            <View style={styles.modalBody}>
+                <Text style={styles.modalTitle}>{title}</Text>
+                <Text style={styles.modalText}>{message}</Text>
+                <View style={styles.modalRow}>
                     <TouchableOpacity onPress={onClose}>
-                        <Text style={styles.confirmationModalText}>Potwierdź</Text>
+                        <Text style={styles.modalText}>Anuluj</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={onConfirm}>
+                        <Text style={styles.modalText}>Potwierdź</Text>
                     </TouchableOpacity>
                 </View>
             </View>
