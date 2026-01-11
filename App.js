@@ -12,7 +12,7 @@ import BusinessLogInScreen from './src/frontend/screens/BusinessLogInScreen';
 import TermsOfServiceScreen from './src/frontend/screens/TermsOfServiceScreen';
 import BusinessBottomTabs from './src/frontend/navigation/BusinessBottomTabs';
 import {UserProvider} from './src/frontend/contexts/userContext';
-
+import {BusinessProvider} from './src/frontend/contexts/businessContext'
 
 // const Stack = createNativeStackNavigator({
   
@@ -50,9 +50,30 @@ export default function App() {
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
           <Stack.Screen name="BottomTabs" component={BottomTabs}/>
-          <Stack.Screen name="BusinessBottomTabs" component={BusinessBottomTabs}/>
-          <Stack.Screen name="BusinessSignUpScreen" component={BusinessSignUpScreen}/>
-          <Stack.Screen name="BusinessLogInScreen" component={BusinessLogInScreen}/>
+                    {/* Ekrany biznesowe otoczone BusinessProvider */}
+          <Stack.Screen name="BusinessSignUpScreen">
+            {() => (
+              <BusinessProvider>
+                <BusinessSignUpScreen />
+              </BusinessProvider>
+            )}
+          </Stack.Screen>
+
+          <Stack.Screen name="BusinessLogInScreen">
+            {() => (
+              <BusinessProvider>
+                <BusinessLogInScreen />
+              </BusinessProvider>
+            )}
+          </Stack.Screen>
+
+          <Stack.Screen name="BusinessBottomTabs">
+            {() => (
+              <BusinessProvider>
+                <BusinessBottomTabs />
+              </BusinessProvider>
+            )}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </UserProvider>

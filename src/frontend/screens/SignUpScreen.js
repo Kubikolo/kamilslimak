@@ -43,7 +43,7 @@ export default function SignUpScreen() {
     }
 
     try {
-      const response = await fetch("http://192.168.0.9:5000/create-user", {
+      const response = await fetch("http://192.168.0.9:5000//create-user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
