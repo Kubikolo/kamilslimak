@@ -49,7 +49,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{ 
             headerShown: false,
             animation: "slide_from_right"
-        }} initialRouteName="BusinessBottomTabs">
+        }} initialRouteName="LogInScreen">
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="LogInScreen" component={LogInScreen} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />

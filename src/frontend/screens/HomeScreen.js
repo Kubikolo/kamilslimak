@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Searchbar } from 'react-native-paper';
 import { styles } from '../styles/styles'
 import BusinessCard from '../components/home/BusinessCard';
 import BusinessCardContainer from '../components/home/BusinessCardContainer';
+import { UserContext } from "../contexts/userContext"
 
 export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -12,6 +13,9 @@ export default function HomeScreen() {
   const onChangeSearch = query => setSearchQuery(query);
 
   const [businesses, setBusinesses] = React.useState([]);
+  const [favoriteIds, setFavoriteIds] = useState([]);
+  const { userID } = useContext(UserContext);
+
   useEffect(() => {
     const fetchBusiness = async () => {
       const response = await fetch("http://192.168.0.9:5000/business");
@@ -26,7 +30,32 @@ export default function HomeScreen() {
       setBusinesses(businessesArray);
     };
 
+    const fetchFavorites = async () => {
+    try {
+      const response = await fetch(
+        `http://192.168.0.9:5000/favorited_items/${userID}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+      }
+
+      const data = await response.json();
+      setFavoriteIds(Object.keys(data));
+
+    } catch (error) {
+      console.error("Fetch favorited items error:", error);
+    }
+  };
+
     fetchBusiness();
+    fetchFavorites();
   }, []);
 
   return (
@@ -67,6 +96,8 @@ export default function HomeScreen() {
             notInCategory={true}
             text={business.name}
             iconUrl={business.icon}
+            initialLiked={favoriteIds.includes(business.id)}
+            businessID={business.id}
           />
         ))}
       </ScrollView>

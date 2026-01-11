@@ -79,8 +79,10 @@ export const styles = StyleSheet.create({
     businessTextContainer: {
         width: "100%",
         backgroundColor: "#E5E5E5", // light gray
-        paddingVertical: 8,
-        paddingLeft: 16
+        padding: 16,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
     },
 
     businessCardText: {
