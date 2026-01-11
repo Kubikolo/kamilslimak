@@ -3,7 +3,7 @@ import { View, TextInput, Button, Text, StyleSheet, Alert, TouchableOpacity } fr
 import {styles} from '../styles/styles';
 import { SafeAreaView } from "react-native-safe-area-context";
 import {useNavigation} from '@react-navigation/native';
-
+import { UserContext } from "../contexts/userContext"; 
 
 export default function SignUpScreen() {
   const navigation = useNavigation();
@@ -138,7 +138,9 @@ export default function SignUpScreen() {
           onPress={handleSignUp}
           activeOpacity={0.9}
         >
-          <Text style={styles.signUpButtonText}>
+          <Text 
+          style={styles.signUpButtonText}
+          onPress={() => navigation.navigate('BottomTabs')}>
             Zarejestruj się
           </Text>
         </TouchableOpacity>
