@@ -675,4 +675,22 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    userPointsReturnLink: {
+        fontSize: 20,
+        fontWeight: 500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+        paddingBottom: 20
+    },
+
+    userPointsEnterLink: {
+        fontSize: 20,
+        fontWeight: 500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+        paddingBottom: 20
+    },
+
 });

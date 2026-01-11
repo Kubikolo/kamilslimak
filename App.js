@@ -14,6 +14,7 @@ import BusinessBottomTabs from './src/frontend/navigation/BusinessBottomTabs';
 import {UserProvider} from './src/frontend/contexts/userContext';
 import {BusinessProvider} from './src/frontend/contexts/businessContext';
 import BusinessTabs from './src/frontend/screens/BusinessTabs';
+import UserPointsScreen from './src/frontend/screens/UserPointsScreen';
 
 
 // const Stack = createNativeStackNavigator({
@@ -56,6 +57,7 @@ export default function App() {
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="BusinessScreen" component={BusinessTabs} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen name="UserPointsScreen" component={UserPointsScreen} />
           <Stack.Screen name="BottomTabs" component={BottomTabs}/>
                     {/* Ekrany biznesowe otoczone BusinessProvider */}
           <Stack.Screen name="BusinessSignUpScreen">

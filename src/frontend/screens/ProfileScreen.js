@@ -5,28 +5,30 @@ import { styles } from "../styles/styles";
 import ProfileButton from "../components/profile/ProfileButton";
 import ProfileBodyOption from "../components/profile/ProfileBodyOption";
 import { UserContext } from "../contexts/userContext";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ProfileScreen() {
   const { userID } = useContext(UserContext); // pobieramy userID z Context
   const [points, setPoints] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
 
-  useEffect(() => {
-    if (!userID) return;
-    const fetchPoints = async () => {
-      try {
-        const response = await fetch(`http://10.230.99.55:5000/client-points/${userID}`);
-        const data = await response.json();
-        setPoints(data);
-      } catch (error) {
-        console.error("Fetch points error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   if (!userID) return;
+  //   const fetchPoints = async () => {
+  //     try {
+  //       const response = await fetch(`http://10.230.99.55:5000/client-points/${userID}`);
+  //       const data = await response.json();
+  //       setPoints(data);
+  //     } catch (error) {
+  //       console.error("Fetch points error:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchPoints();
-  }, [userID]);
+  //   fetchPoints();
+  // }, [userID]);
 
   return (
     <SafeAreaView style={styles.profileContainer}>
@@ -36,17 +38,9 @@ export default function ProfileScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.profileBody}>
-        {loading ? (
-          <ActivityIndicator size="large" color="#0000ff" />
-        ) : (
-          Object.entries(points).map(([businessName, pointValue]) => (
-            <ProfileBodyOption
-              key={businessName}
-              iconName="star"
-              text={`${businessName}: ${pointValue} punktów`}
-            />
-          ))
-        )}
+        <Text style={styles.userPointsEnterLink} onPress={() => navigation.navigate('UserPointsScreen')}>
+          Przejdź do punktów
+        </Text>
       </ScrollView>
     </SafeAreaView>
   );
