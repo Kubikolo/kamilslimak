@@ -51,6 +51,8 @@ export default function App() {
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
           <Stack.Screen name="BottomTabs" component={BottomTabs}/>
           <Stack.Screen name="BusinessBottomTabs" component={BusinessBottomTabs}/>
+          <Stack.Screen name="BusinessSignUpScreen" component={BusinessSignUpScreen}/>
+          <Stack.Screen name="BusinessLogInScreen" component={BusinessLogInScreen}/>
         </Stack.Navigator>
       </NavigationContainer>
     </UserProvider>
