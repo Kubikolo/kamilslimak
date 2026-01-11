@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { StyleColors } from "./colors";
-import OfferBody from "../components/offers/OfferBody";
 
 export const styles = StyleSheet.create({
       container: { 
@@ -450,34 +449,69 @@ export const styles = StyleSheet.create({
         borderRadius: 6,
         alignItems: 'center',
     },
+
+    deleteButton: {
+        marginTop: 12,
+        backgroundColor: StyleColors.accent,
+        paddingVertical: 10,
+        borderRadius: 6,
+        alignItems: 'center',
+    },
+
+    addButton: {
+        backgroundColor: '#d7d7d7ff',
+        borderRadius: 6,
+        alignItems: 'center',
+        alignSelf: 'center'
+    },
+
+    addButtonText: {
+        fontSize: 15,
+        fontWeight: 500,
+        padding: 10,
+        marginHorizontal: 5,
+    },
+    
     activateButtonText: {
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 16,
     },
 
-    confirmationModalBody: {
+    modalContainer: {
         flex: 1, 
         justifyContent: 'center', 
         alignItems: 'center', 
         backgroundColor: '#57575780',
         padding: 24,
     },
+    
+    modalBody: {
+        backgroundColor: '#fff',
+        width: '80%',
+        padding: 24,
+        borderRadius: 8,
+    },
 
-    confirmationModalTitle: {
+    modalTitle: {
         textAlign: 'center',
         fontSize: 15,
         fontWeight: 500,
     },
 
-    confirmationModalRow: {
+    modalRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
 
-    confirmationModalText: {
+    modalText: {
         textAlign: 'center',
         paddingVertical: 10,
     },
+
+    modalTextInput: {
+        height: 40,
+        marginVertical: 12,
+    }
 });

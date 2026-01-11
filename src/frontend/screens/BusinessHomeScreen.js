@@ -10,8 +10,8 @@ export default function BusinessHomeScreen({ route }) {
     const businessId = route.params;
     const Tab = createMaterialTopTabNavigator();
     return (
-    <SafeAreaView style={styles.homeContainer}>
-            <View style={styles.homeHeader}>
+    <SafeAreaView style={styles.businessContainer}>
+            <View style={styles.businessHeader}>
                 <Text style={styles.businessHeaderText}>Pizza Romana</Text>
             </View>
             <Tab.Navigator
