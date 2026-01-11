@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
 import { View, TextInput, Button, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import {styles} from '../styles/styles';
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -7,6 +7,7 @@ import { UserContext } from "../contexts/userContext";
 
 export default function SignUpScreen() {
   const navigation = useNavigation();
+  const { setUserID } = useContext(UserContext); // pobieramy setter do zapisania UID
 
   const [email, setEmail] = useState("");
   //const [emailError, setEmailError] = useState("");
@@ -36,6 +37,11 @@ export default function SignUpScreen() {
       return;
     }
 
+    if(!isValidPassword(password)){
+      Alert.alert("Hasło powinno być dłuże niż 6 znaków");
+      return;
+    }
+
     try {
       const response = await fetch("http://192.168.0.9:5000/create-user", {
         method: "POST",
@@ -49,21 +55,15 @@ export default function SignUpScreen() {
         }),
       });
 
-      console.log("Status:", response.status);
-      const text = await response.text();
-      console.log("Response text:", text);
+      const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error("Nie udało się utworzyć konta");
+      if (response.ok && data.uid) {
+        setUserID(data.uid); // zapis UID w kontekście
+        Alert.alert("Sukces", "Konto utworzone!");
+        navigation.navigate("BottomTabs"); // przechodzimy do BottomTabs
+      } else {
+        Alert.alert("Błąd", data.message || "Nie udało się utworzyć konta");
       }
-
-      const data = JSON.parse(text); // rzutowanie JSON
-      if (!data.uid) throw new Error("Nie udało się utworzyć konta");
-
-      Alert.alert("Sukces", "Konto utworzone!");
-      console.log("UID:", data.uid);
-
-      navigation.replace("HomeScreen");
     } catch (error) {
       console.error(error);
       Alert.alert("Błąd", error.message);
