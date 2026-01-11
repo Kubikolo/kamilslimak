@@ -18,6 +18,14 @@ export const styles = StyleSheet.create({
         padding: 15
     },
 
+    homeHeader: {
+        height: 80,
+        flexDirection: "row",
+        alignItems: "center",
+        padding: 16,
+        justifyContent: 'center'
+    },
+
     homeSearch: {
         height: 60,
         fontSize: 10
