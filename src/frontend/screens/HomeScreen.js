@@ -6,12 +6,12 @@ import { styles } from '../styles/styles';
 import BusinessCard from '../components/home/BusinessCard';
 import BusinessCardContainer from '../components/home/BusinessCardContainer';
 import { UserContext } from '../contexts/userContext';
+import { Text } from 'react-native';
 
 
 export default function HomeScreen() {
   const { userID } = useContext(UserContext);
   const  clientId   = userID;
-if (!clientId) console.log("clientId is undefined in HomeScreen");
 
   const [searchQuery, setSearchQuery] = useState('');
   const [allItems, setAllItems] = useState([]);
@@ -33,7 +33,8 @@ if (!clientId) console.log("clientId is undefined in HomeScreen");
           icon: item.icon || null,
           category: item.category || 'Inne',
         })) : [];
-
+        
+        console.log('Pobrane firmy:', itemsArray);
         setAllItems(itemsArray);
         setFilteredItems(itemsArray);
       } catch (error) {
@@ -41,12 +42,12 @@ if (!clientId) console.log("clientId is undefined in HomeScreen");
       }
     };
 
-    //fetchBusinesses();
+    fetchBusinesses();
 
     // const interval = setInterval(fetchBusinesses, 5000);
     // return () => clearInterval(interval);
 
-  }, [allItems]);
+  }, []);
 
 
 useEffect(() => {
@@ -59,14 +60,15 @@ useEffect(() => {
       const favouriteIds = data && typeof data === 'object' ? Object.keys(data) : [];
 
       const favouritesArray = allItems.filter(item => favouriteIds.includes(item.id));
-
+      
+      console.log('Pobrane ulubione:', favouritesArray);
       setFavouriteItems(favouritesArray);
     } catch (error) {
       console.error('Błąd pobierania ulubionych:', error);
     }
   };
 
-  //fetchFavourites();
+  fetchFavourites();
 
   // const interval = setInterval(fetchFavourites, 5000);
   // return () => clearInterval(interval);
@@ -105,51 +107,51 @@ useEffect(() => {
     return [...new Set(filteredItems.map(item => item.category))];
   }, [filteredItems]);
 
-  const [businesses, setBusinesses] = React.useState([]);
-  const [favoriteIds, setFavoriteIds] = useState([]);
-  const { userID } = useContext(UserContext);
+  // const [businesses, setBusinesses] = React.useState([]);
+  // const [favoriteIds, setFavoriteIds] = useState([]);
 
-  useEffect(() => {
-    const fetchBusiness = async () => {
-      const response = await fetch("http://192.168.0.9:5000/business");
-      const data = await response.json();
 
-      const businessesArray = Object.entries(data).map(
-        ([id, business]) => ({
-          id,
-          ...business,
-        })
-      );
-      setBusinesses(businessesArray);
-    };
+  // useEffect(() => {
+  //   const fetchBusiness = async () => {
+  //     const response = await fetch("http://192.168.0.9:5000/business");
+  //     const data = await response.json();
 
-    const fetchFavorites = async () => {
-    try {
-      const response = await fetch(
-        `http://192.168.0.9:5000/favorited_items/${userID}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+  //     const businessesArray = Object.entries(data).map(
+  //       ([id, business]) => ({
+  //         id,
+  //         ...business,
+  //       })
+  //     );
+  //     setBusinesses(businessesArray);
+  //   };
 
-      if (!response.ok) {
-        throw new Error(`HTTP error ${response.status}`);
-      }
+  //   const fetchFavorites = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `http://192.168.0.9:5000/favorited_items/${userID}`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
 
-      const data = await response.json();
-      setFavoriteIds(Object.keys(data));
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error ${response.status}`);
+  //     }
 
-    } catch (error) {
-      console.error("Fetch favorited items error:", error);
-    }
-  };
+  //     const data = await response.json();
+  //     setFavoriteIds(Object.keys(data));
 
-    fetchBusiness();
-    fetchFavorites();
-  }, []);
+  //   } catch (error) {
+  //     console.error("Fetch favorited items error:", error);
+  //   }
+  // };
+
+  //   fetchBusiness();
+  //   fetchFavorites();
+  // }, []);
 
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -183,13 +185,13 @@ useEffect(() => {
         <Text style={styles.businessCardCategoryTitle}>
           Wszystko
         </Text>
-        {businesses.map((business) => (
+        {allItems.map((business) => (
           <BusinessCard
             key={business.id}
             notInCategory={true}
             text={business.name}
             iconUrl={business.icon}
-            initialLiked={favoriteIds.includes(business.id)}
+            initialLiked={favouriteItems.includes(business.id)}
             businessID={business.id}
           />
         ))}
