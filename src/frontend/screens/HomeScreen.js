@@ -7,6 +7,7 @@ import BusinessCard from '../components/home/BusinessCard';
 import BusinessCardContainer from '../components/home/BusinessCardContainer';
 import { UserContext } from '../contexts/userContext';
 import { Text } from 'react-native';
+import { View } from 'react-native';
 
 
 export default function HomeScreen() {
@@ -172,7 +173,7 @@ useEffect(() => {
           </BusinessCardContainer>
         )}
 
-        {filteredCategories.map(category => (
+        {/* {filteredCategories.map(category => (
           <BusinessCardContainer key={category} title={category}>
             {filteredItems
               .filter(item => item.category === category)
@@ -180,12 +181,12 @@ useEffect(() => {
                 <BusinessCard key={item.id} text={item.name} />
               ))}
           </BusinessCardContainer>
-        ))}
+        ))}         */}
 
         <Text style={styles.businessCardCategoryTitle}>
           Wszystko
         </Text>
-        {allItems.map((business) => (
+        {filteredItems.map((business) => (
           <BusinessCard
             key={business.id}
             notInCategory={true}
