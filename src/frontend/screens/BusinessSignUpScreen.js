@@ -49,7 +49,7 @@ export default function BusinessSignUpScreen() {
     try {
       // await createUserWithEmailAndPassword(auth, email, password);
       Alert.alert("Sukces", "Konto utworzone!");
-      navigation.navigate("BottomTabs");
+      navigation.navigate("BusinessBottomTabs");
     } catch (error) {
       Alert.alert("Błąd", error.message);
     }

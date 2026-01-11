@@ -10,6 +10,7 @@ import ProfileScreen from './src/frontend/screens/ProfileScreen';
 import BusinessSignUpScreen from './src/frontend/screens/BusinessSignUpScreen';
 import BusinessLogInScreen from './src/frontend/screens/BusinessLogInScreen';
 import TermsOfServiceScreen from './src/frontend/screens/TermsOfServiceScreen';
+import BusinessBottomTabs from './src/frontend/navigation/BusinessBottomTabs';
 import {UserProvider} from './src/frontend/contexts/userContext';
 
 
@@ -49,6 +50,7 @@ export default function App() {
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
           <Stack.Screen name="BottomTabs" component={BottomTabs}/>
+          <Stack.Screen name="BusinessBottomTabs" component={BusinessBottomTabs}/>
         </Stack.Navigator>
       </NavigationContainer>
     </UserProvider>
