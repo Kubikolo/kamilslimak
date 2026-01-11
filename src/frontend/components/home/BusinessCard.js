@@ -42,7 +42,11 @@ export default function BusinessCard({ iconUrl = null, text = "Usługa", notInCa
         !notInCategory && styles.businessCardInCategory,
         notInCategory && styles.businessCardNotInCategory,
       ]}
-      onPress={() => navigation.navigate('BusinessScreen')}
+      onPress={() =>
+        navigation.navigate('BusinessScreen', {
+          businessId: businessId,
+        })
+      }
       >
       <View style={styles.businessTextContainer}>
         <Text style={styles.businessCardText}>{text}</Text>
