@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { StyleColors } from "./colors";
-import OfferBody from "../components/offers/OfferBody";
 
 export const styles = StyleSheet.create({
       container: { 
