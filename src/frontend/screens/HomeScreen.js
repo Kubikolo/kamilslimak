@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Searchbar } from 'react-native-paper';
@@ -10,6 +10,24 @@ export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const onChangeSearch = query => setSearchQuery(query);
+
+  const [businesses, setBusinesses] = React.useState([]);
+  useEffect(() => {
+    const fetchBusiness = async () => {
+      const response = await fetch("http://192.168.0.9:5000/business");
+      const data = await response.json();
+
+      const businessesArray = Object.entries(data).map(
+        ([id, business]) => ({
+          id,
+          ...business,
+        })
+      );
+      setBusinesses(businessesArray);
+    };
+
+    fetchBusiness();
+  }, []);
 
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -39,6 +57,18 @@ export default function HomeScreen() {
           <BusinessCard/>
           <BusinessCard/>
         </BusinessCardContainer>
+
+        <Text style={styles.businessCardCategoryTitle}>
+          Wszystko
+        </Text>
+        {businesses.map((business) => (
+          <BusinessCard
+            key={business.id}
+            notInCategory={true}
+            text={business.name}
+            iconUrl={business.icon}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
