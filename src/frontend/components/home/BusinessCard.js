@@ -44,7 +44,7 @@ export default function BusinessCard({ iconUrl = null, text = "Usługa", notInCa
       ]}
       onPress={() =>
         navigation.navigate('BusinessScreen', {
-          businessId: businessId,
+          businessId: businessID,
         })
       }
       >
