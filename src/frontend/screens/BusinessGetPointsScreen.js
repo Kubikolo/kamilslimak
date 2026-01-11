@@ -7,7 +7,6 @@ import CreateOfferModal from '../components/offers/CreateOfferModal.js';
 
 export default function BusinessGetPointsScreen({ businessId }) {
     const [offers, setOffers] = useState([]);
-    const [loadingOffers, setLoadingOffers] = useState(true);
     const [offerToDelete, setOfferToDelete] = useState(null);
     const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
     const [offerModalVisible, setOfferModalVisible] = useState(false);
@@ -17,7 +16,6 @@ export default function BusinessGetPointsScreen({ businessId }) {
 
     const fetchOffers = async () => {
       try {
-        setLoadingOffers(true);
         const response = await fetch(`http://192.168.0.9:5000/business/${businessId}`);
         const data = await response.json();
 
@@ -29,8 +27,6 @@ export default function BusinessGetPointsScreen({ businessId }) {
         } catch (error) {
             console.error("Fetch offers error:", error);
             Alert.alert("Błąd przy pobieraniu ofert");
-        } finally {
-            setLoadingOffers(false);
         }
     };
 
