@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { styles } from "../../styles/styles"
 import { useNavigation } from "@react-navigation/native";
 
-export default function BusinessCard({ iconUrl = null, text = "Opcja", notInCategory}) {
+export default function BusinessCard({ iconUrl = null, text = "Opcja", notInCategory, businessId }) {
   const navigation = useNavigation();
 
   return (
@@ -10,7 +10,11 @@ export default function BusinessCard({ iconUrl = null, text = "Opcja", notInCate
         !notInCategory && styles.businessCardInCategory,
         notInCategory && styles.businessCardNotInCategory,
       ]}
-      onPress={() => navigation.navigate('BusinessScreen')}
+      onPress={() =>
+        navigation.navigate('BusinessScreen', {
+          businessId: businessId,
+        })
+      }
       >
       <View style={styles.businessTextContainer}>
         <Text style={styles.businessCardText}>{text}</Text>

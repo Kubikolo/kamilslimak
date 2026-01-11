@@ -67,6 +67,7 @@ export default function HomeScreen() {
             notInCategory={true}
             text={business.name}
             iconUrl={business.icon}
+            businessId={business.id}
           />
         ))}
       </ScrollView>
