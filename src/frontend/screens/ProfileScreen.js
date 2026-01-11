@@ -23,7 +23,7 @@ export default function ProfileScreen() {
     if (!userID) return;
     const fetchPoints = async () => {
       try {
-        const response = await fetch(`http://192.168.0.9:5000/client-points/${userID}`);
+        const response = await fetch(`http://10.230.99.55:5000/client-points/${userID}`);
         const data = await response.json();
         setPoints(data);
       } catch (error) {
