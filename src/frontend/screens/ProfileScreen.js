@@ -7,11 +7,20 @@ import ProfileBodyOption from "../components/profile/ProfileBodyOption";
 import { UserContext } from "../contexts/userContext";
 import { useNavigation } from "@react-navigation/native";
 
+
 export default function ProfileScreen() {
-  const { userID } = useContext(UserContext); // pobieramy userID z Context
+  const { userID } = useContext(UserContext);
   const [points, setPoints] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const { setUserID } = useContext(UserContext);
   const navigation = useNavigation();
+
+  function logOut() {
+    setUserID(null);
+    navigation.navigate("LogInScreen")
+  }
+
 
   // useEffect(() => {
   //   if (!userID) return;
@@ -30,6 +39,8 @@ export default function ProfileScreen() {
   //   fetchPoints();
   // }, [userID]);
 
+
+
   return (
     <SafeAreaView style={styles.profileContainer}>
       <View style={styles.profileHeader}>
@@ -38,9 +49,26 @@ export default function ProfileScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.profileBody}>
+
+        {/* {loading ? (
+          <ActivityIndicator size="large" color="#0000ff" />
+        ) : (
+          Object.entries(points).map(([businessName, pointValue]) => (
+            <ProfileBodyOption
+              key={businessName}
+              iconName="star"
+              text={`${businessName}: ${pointValue} punktów`}
+            />
+          ))
+        )} */}
+
+        <ProfileBodyOption iconName="info" text="Informacja"/>
+        <ProfileBodyOption iconName="logout" text="Wyloguj" textColor="red" onPress={logOut}/>
+
         <Text style={styles.userPointsEnterLink} onPress={() => navigation.navigate('UserPointsScreen')}>
           Przejdź do punktów
         </Text>
+
       </ScrollView>
     </SafeAreaView>
   );
