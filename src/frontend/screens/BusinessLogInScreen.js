@@ -27,7 +27,7 @@ export default function BusinessLogInScreen() {
        
     try {
       // await logInWithEmailAndPassword(email, password);
-      navigation.navigate("BottomTabs");
+      navigation.navigate("BusinessBottomTabs");
     } catch (error) {
       Alert.alert("Błąd", error.message);
     }

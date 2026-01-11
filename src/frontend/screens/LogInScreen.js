@@ -28,7 +28,7 @@ export default function LogInScreen() {
       const data = await response.json();
       if (response.ok) {
         setUserID(data.uid); // ustawiamy userID w Context
-        navigation.navigate("BusinessBottomTabs");
+        navigation.navigate("BottomTabs");
       } else {
         Alert.alert("Błąd logowania", data.message || "Nieznany błąd");
       }
