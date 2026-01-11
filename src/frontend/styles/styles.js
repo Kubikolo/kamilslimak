@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { StyleColors } from "./colors";
 
+
 export const styles = StyleSheet.create({
       container: { 
         
@@ -195,6 +196,12 @@ export const styles = StyleSheet.create({
         alignItems: 'center' 
     },
 
+    signUpHeader: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
     signUpHeaderText: {
         fontSize: 30,
         fontWeight: 800
@@ -227,9 +234,10 @@ export const styles = StyleSheet.create({
     },
 
     signUpTermsOfServiceContainer: {
-        height: '6%',
+
         width: '80%',
         alignItems: 'center',
+        paddingTop: 10
     },
 
     signUpTermsOfServiceContainerText: {
@@ -471,4 +479,73 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         paddingVertical: 10,
     },
+
+    businessSignUpScreenScrollContainer: { 
+        flex: 1,
+        width: '100%',
+    },
+
+    businessSignUpInputContainer: {
+        width: '80%',
+        paddingTop: 20,
+
+    },
+
+    businessSignUpBoxContainer: {
+        height: 150,
+        width: '80%',
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+
+    businessSignUpLinkContainer: {
+
+        width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    businessSignUpLinkContainerText: {
+        fontSize: 20,
+        fontWeight: 300,
+        paddingBottom: 10
+    },
+
+    businessSignUpLink: {
+        fontSize: 20,
+        fontWeight: 500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+        paddingBottom: 20
+    },
+
+    businessSignUpLinkBottom: {
+        fontSize: 20,
+        fontWeight: 500,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: "#080a9f",
+        paddingBottom: 100
+    },
+
+    businessBox: {
+        width: '100%',
+
+        alignItems: 'center',
+
+    },
+
+    businessSignUpContent: {
+        alignItems: 'center',
+        paddingBottom: 40,
+    },
+
+    businessSignUpHeader: {
+        paddingTop: 20,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
 });
