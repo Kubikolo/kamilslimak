@@ -97,7 +97,7 @@ export default function HomeScreen() {
             text={business.name}
             iconUrl={business.icon}
             initialLiked={favoriteIds.includes(business.id)}
-            businessId={business.id}
+            businessID={business.id}
           />
         ))}
       </ScrollView>
