@@ -5,11 +5,19 @@ import { styles } from "../styles/styles";
 import ProfileButton from "../components/profile/ProfileButton";
 import ProfileBodyOption from "../components/profile/ProfileBodyOption";
 import { UserContext } from "../contexts/userContext";
+import {useNavigation} from '@react-navigation/native';
 
 export default function ProfileScreen() {
-  const { userID } = useContext(UserContext); // pobieramy userID z Context
+  const { userID } = useContext(UserContext);
   const [points, setPoints] = useState({});
   const [loading, setLoading] = useState(true);
+  const { setUserID } = useContext(UserContext);
+  const navigation = useNavigation();
+
+  function logOut() {
+    setUserID(null);
+    navigation.navigate("LogInScreen")
+  }
 
   useEffect(() => {
     if (!userID) return;
@@ -27,6 +35,8 @@ export default function ProfileScreen() {
 
     fetchPoints();
   }, [userID]);
+
+
 
   return (
     <SafeAreaView style={styles.profileContainer}>
@@ -47,6 +57,9 @@ export default function ProfileScreen() {
             />
           ))
         )}
+
+        <ProfileBodyOption iconName="info" text="Informacja"/>
+        <ProfileBodyOption iconName="logout" text="Wyloguj" textColor="red" onPress={logOut}/>
       </ScrollView>
     </SafeAreaView>
   );

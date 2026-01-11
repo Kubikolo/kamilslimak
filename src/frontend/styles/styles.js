@@ -129,18 +129,17 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         padding: 10,
         alignItems: 'center',
-        marginBottom: 30
+        marginBottom: 15,
     },
 
     profileOptionText: {
         fontSize: 20,
         fontWeight: 500,
-        marginLeft: 20
+        marginLeft: 15
     },
 
     profileOptionIcon: {
-        color: "black",
-        size: 60
+        size: 40
     },
 
     qrContainer: {
