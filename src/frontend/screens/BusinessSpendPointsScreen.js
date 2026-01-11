@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert } from 'react-native';
 import { styles } from '../styles/styles.js';
 import OfferBody from '../components/offers/OfferBody.js';
@@ -6,27 +6,61 @@ import ConfirmationModal from '../components/offers/ConfirmationModal.js';
 import CreateOfferModal from '../components/offers/CreateOfferModal.js';
 
 export default function BusinessSpendPointsScreen({ businessId }) {
-    const offers = [
-        { id: '1', name: 'Zniżka 15% na skibidi', points: 10 },
-        { id: '2', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '3', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '4', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '5', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '6', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '7', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '8', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '9', name: 'Zniżka 15% na skibidi', points: 20 },
-        { id: '10', name: 'Zniżka 15% na skibidi', points: 20 },
-        // ...
-    ];
+    const [offers, setOffers] = useState([]);
+    const [loadingOffers, setLoadingOffers] = useState(true);
+    const [offerToDelete, setOfferToDelete] = useState(null);
     const [modalVisible, setConfirmationModalVisible] = useState(false);
     const [offerModalVisible, setOfferModalVisible] = useState(false);
 
-    const handleConfirm = () => {
-        setConfirmationModalVisible(false);
+    useEffect(() => {
+        if (!businessId) return;
+    
+        const fetchOffers = async () => {
+          try {
+            setLoadingOffers(true);
+            const response = await fetch(`http://192.168.0.9:5000/business/${businessId}`);
+            const data = await response.json();
+    
+            const filteredOffers = (data.offers || []).filter(
+                offer => offer.add_points === 0
+            );
+    
+            setOffers(filteredOffers);
+            } catch (error) {
+                console.error("Fetch offers error:", error);
+                Alert.alert("Błąd przy pobieraniu ofert");
+            } finally {
+                setLoadingOffers(false);
+            }
+        };
+    
+        fetchOffers();
+      }, [businessId]);
+
+    const handleConfirm = async () => {
+        if (!offerToDelete) return;
+
+        try {
+            await fetch(
+                `http://192.168.0.9:5000/business/${businessId}/${offerToDelete}/remove`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            setOffers(prev => prev.filter(o => o.id !== offerToDelete));
+            setOfferToDelete(null);
+            setConfirmationModalVisible(false);
+        } catch (err) {
+            console.error(err);
+            Alert.alert("Błąd", "Nie udało się usunąć oferty");
+        } 
     };
 
-    const handleCreateOffer = (productName, points) => {
+    const handleCreateOffer = async (productName, points) => {
         if (!productName.trim() || !points.trim()) {
                 Alert.alert("Podaj dane oferty!");
                 return;
@@ -38,7 +72,39 @@ export default function BusinessSpendPointsScreen({ businessId }) {
             return;
         }
         // do API!!!
-        setOfferModalVisible(false);
+        try {
+            const response = await fetch(
+                `http://192.168.0.9:5000/business/${businessId}/offer/create`,
+                {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: productName.trim(),
+                    description: "...",
+                    price: 20,
+                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIibPbOeDQQscm9g-fDNdCvROokQJukg8nYQ&s",
+                    add_points: 0,
+                    cost_points: parsed
+                }),
+                }
+            );
+
+            if (!response.ok) throw new Error("Błąd przy dodawaniu oferty");
+
+            const data = await response.json();
+
+            const newOffer = {
+                id: data.offer_id,
+                name: productName.trim(),
+                points: parsed
+            };
+
+            setOffers((prev) => [...prev, newOffer]);
+            setOfferModalVisible(false);
+            } catch (error) {
+            console.error("Add offer error:", error);
+            Alert.alert("Błąd przy dodawaniu oferty");
+        }
     };
 
     return (
@@ -59,7 +125,7 @@ export default function BusinessSpendPointsScreen({ businessId }) {
                 secondText="Liczba punktów do uzyskania benefitu:"
             />
             
-            <Text style={styles.businessText}>Możesz dodawać i usuwać benefity za punkty dla klientów</Text>
+            <Text style={styles.businessText}>Dodaj lub usuń benefity za punkty dla klientów</Text>
             <View style={styles.businessListContainer}>
                 <FlatList
                     style={styles.businessContainer}
@@ -69,9 +135,13 @@ export default function BusinessSpendPointsScreen({ businessId }) {
                     renderItem={({ item }) => (
                         <OfferBody 
                             name={item.name} 
+                            points={item.points}
                             showDeleteButton={true}
                             buttonText='Usuń'
-                            onActivate={() => setConfirmationModalVisible(true)}
+                            onActivate={() => {
+                                setOfferToDelete(item.id);
+                                setConfirmationModalVisible(true);
+                            }}
                         />
                     )}
                 />
