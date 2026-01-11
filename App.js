@@ -40,11 +40,15 @@ import {UserProvider} from './src/frontend/contexts/userContext';
 // const Navigation = createStaticNavigation(Stack);
 
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     <UserProvider>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ 
+            headerShown: false,
+            animation: "slide_from_right",
+        }}>
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="LogInScreen" component={LogInScreen} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
